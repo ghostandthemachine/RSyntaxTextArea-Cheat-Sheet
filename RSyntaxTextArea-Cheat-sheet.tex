@@ -1,0 +1,178 @@
+  \documentclass[footexclude,twocolumn,DIV40,fontsize=8.7pt]{scrreprt}
+
+% Author: Jon Rose
+% Comments, errors, suggestions: jonrose08@gmail.com
+
+% Based on Steve Tayon's excellent Clojure Cheat Sheet
+% and Sam Aaron's Overtone Cheat Sheet
+
+% License
+% Eclipse Public License v1.0
+% http://opensource.org/licenses/eclipse-1.0.php
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{lmodern}
+\renewcommand*\familydefault{\sfdefault}
+
+
+\usepackage[table]{xcolor}
+
+% Set column space
+\setlength{\columnsep}{0.30em}
+
+% Define colours
+\definecolorset{hsb}{}{}{red,0,.4,0.95;orange,.1,.4,0.95;green,.25,.4,0.95;grey,0.0,0.0,0.1;yellow,.15,.4,0.95}
+
+\definecolorset{hsb}{}{}{blue,.55,.4,0.95;purple,.7,.4,0.95;pink,.8,.4,0.95;blue2,.58,.4,0.95}
+
+\definecolorset{hsb}{}{}
+               {magenta,.9,.4,0.95;green2,.29,.4,0.95}
+
+               % Redefine sections
+               \makeatletter
+               \renewcommand{\section}{\@startsection{section}{1}{0mm}
+                 {-1.7ex}{0.7ex}{\normalfont\large\bfseries}}
+               \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}
+                 {-1.7ex}{0.5ex}{\normalfont\normalsize\bfseries}}
+               \makeatother
+
+               % No section numbers
+               \setcounter{secnumdepth}{0}
+
+               % No indentation
+               \setlength{\parindent}{0em}
+
+               % No header and footer
+               \pagestyle{empty}
+
+
+               % A few shortcuts
+               \newcommand{\cmd}[1] {\frenchspacing\texttt{\textbf{{#1}}}}
+               \newcommand{\cmdline}[1] {
+                 \begin{tabularx}{\hsize}{X}
+                   \texttt{\textbf{{#1}}}
+                 \end{tabularx}
+               }
+
+               \newcommand{\colouredbox}[2] {
+                 \colorbox{#1!40}{
+                   \begin{minipage}{0.95\linewidth}
+                     {
+                       \rowcolors[]{1}{#1!20}{#1!10}
+                       #2
+                     }
+                   \end{minipage}
+                 }
+               }
+
+               \begin{document}
+
+               {\Large{\textbf{RSyntaxTextArea Cheat Sheet}}}
+               
+               \colouredbox{orange}{
+                 \section{RText}
+                 \begin{tabularx}{\hsize}{lX}
+                    Begin Line & \cmd {home}\\
+                    Selection Begin Line & \cmd {shift home}\\
+                    BeginAction & \cmd {meta home}\\
+                    Selection Begin & \cmd {meta shift home}\\
+                    EndLine & \cmd {end}\\
+                    Selection End Line & \cmd {shift end}\\
+                    End & \cmd {meta end}\\
+                    Selection End & \cmd {meta shift end}\\
+
+                    backward & \cmd {left}\\
+                    Selection Backward & \cmd {shift left}\\
+                    Previous Word & \cmd {meta left}\\
+                    Selection Previous Word & \cmd {meta shift left}\\
+                    Down & \cmd {down}\\
+                    Selection Down & \cmd {shift down}\\
+                    Scroll Down & \cmd {meta down}\\
+                    Line Down & \cmd {alt down}\\
+                    Forward & \cmd {right}\\
+                    Selection Forward & \cmd {shift right}\\
+                    Next Word & \cmd {meta right}\\
+                    Selection Next Word & \cmd {shift meta right}\\
+                    Up & \cmd {up}\\
+                    Selection Up & \cmd {shift up}\\
+                    Scroll Up & \cmd {meta up}\\
+                    LineUp & \cmd {alt up}\\
+
+                    Page Up & \cmd {page up}\\
+                    Selection Page Up & \cmd {shift page up}\\
+                    Selection Page Left & \cmd {meta shift page up}\\
+                    Page Down & \cmd {page down}\\
+                    Selection Page Down & \cmd {shift page down}\\
+                    Selection Page Right & \cmd {meta shift page down}\\
+
+                    Cut & \cmd {cut}\\
+                    Copy & \cmd {copy}\\
+                    Paste & \cmd {past}\\
+
+                    Cut & \cmd {meta x}\\
+                    Copy & \cmd {meta c}\\
+                    Paste & \cmd {meta v}\\
+                    Delete Next Char & \cmd {delete}\\
+                    Cut & \cmd {shift delete}\\
+                    Delete Rest Of Line & \cmd {meta delete}\\
+                    Toggle Text Mode & \cmd {insert}\\
+                    Paste & \cmd {shift insert}\\
+                    Copy & \cmd {meta insert}\\
+                    Select All & \cmd {meta a}\\
+
+                    Delete Line & \cmd {meta d}\\
+                    Join Lines & \cmd {meta j}\\
+
+                    Delete Prev Char & \cmd {shift back space}\\
+                    Delete Prev Word & \cmd {meta back space}\\
+                    Insert Tab & \cmd {tab}\\
+                    Insert Break & \cmd {enter}\\
+                    Insert Break & \cmd {shift enter}\\
+                    Dumb Complete Word & \cmd {meta enter}\\
+
+                    Undo & \cmd {meta z}\\
+                    Redo & \cmd {meta y}\\
+
+                    Next Bookmark & \cmd {f2}\\
+                    Prev Bookmark & \cmd {shift f2}\\
+                    Toggle Bookmark & \cmd {meta f2}\\
+
+                    Prev Occurrence & \cmd {meta shift k}\\
+                    Next Occurrence & \cmd {meta k}\\
+                 \end{tabularx}
+              }
+              \colouredbox{blue}{
+                 \section{RSyntaxTextArea}
+                 \begin{tabularx}{\hsize}{lX}
+                    Decrease Indent & \cmd {shift tab}\\
+                    Close Curly Brace & \cmd {\}}\\
+                    Close Markup Tag & \cmd {/}\\
+                    Toggle Comment & \cmd {meta slash}\\
+                    Go To Matching Bracket & \cmd {meta [}\\
+                    Collapse Fold & \cmd {meta subtract}\\
+                    Expand Fold & \cmd {meta plus}\\
+                    Collapse All Folds & \cmd {meta divide}\\
+                    Expand All Folds & \cmd {meta multiply}\\
+                 \end{tabularx}
+
+               }
+
+               \begin{flushright}
+                 \footnotesize
+                 \rule{0.7\linewidth}{0.25pt}
+                 \verb!$Revision: 0.0.0.1, $Date: 17th July, 2012!\\
+                 \verb!Jon Rose - jonrose08@gmail.com!
+               \end{flushright}
+
+               % history
+
+
+               \end{document}
+
+
+
